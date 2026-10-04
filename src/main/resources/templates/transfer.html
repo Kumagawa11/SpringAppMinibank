@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+    
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
 </head>
+
 <body>
 
-hello
-    
+    <section layout:fragment="content">
+
+
+
+        <form th:object="${transferForm}" th:action="@{/transfer}" th:method="post">
+           
+            <p th:if="${errorMsg}" th:text="${errorMsg}"></p>
+             <p th:if="${#fields.hasErrors('toAccount')}" th:errors="*{toAccount}">
+            </p>
+            <div>
+                送金先口座：<input th:field="*{toAccount}">
+            </div>
+
+
+            <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">
+
+            </p>
+            <div>
+                送金額：<input th:field="*{amount}">
+            </div>
+
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+
+            </p>
+            <div>
+                備考：<textarea th:field="*{description}"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="送金する">
+            </div>
+        </form>
+
+    </section>
 </body>
+
 </html>

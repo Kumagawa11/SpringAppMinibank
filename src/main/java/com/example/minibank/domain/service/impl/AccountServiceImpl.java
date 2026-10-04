@@ -41,6 +41,15 @@ public class AccountServiceImpl implements AccountService{
 		
 	}
 
+	@Override
+	public Optional<AccountModel> getAccountByAccountNumber(Integer accountNumber) {
+		Optional<AccountModel> account = 
+				accountRepository.getAccountByAccountNumber(accountNumber);
+		
+		return account;
+		
+	}
+
 	
 
 

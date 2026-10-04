@@ -9,5 +9,6 @@ import com.example.minibank.domain.model.AccountModel;
 public interface AccountRepository extends JpaRepository<AccountModel, Integer>{
 
 	Optional<AccountModel> getAccountByUserId(Integer userId);
+	Optional<AccountModel> getAccountByAccountNumber(Integer accountNumber);
 
 }

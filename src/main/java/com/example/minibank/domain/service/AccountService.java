@@ -13,6 +13,8 @@ public interface AccountService {
 	public Optional<AccountModel> getAccountByUserId(int userId);
 	
 	public BigDecimal getBalanceByUserId(int userId);
+	
+	public Optional<AccountModel> getAccountByAccountNumber(Integer accountNumber);
 
 	
 }

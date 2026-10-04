@@ -1,11 +1,11 @@
 フレームワーク：SpringBoot
-永続化：Spring JPA
-アーキテクチャ：DDD
+永続化：Spring Data JPA
+アーキテクチャ：レイヤードアーキテクチャ
 フロント：Thymeleaf
 
 使用SpringFramework機能：
-Spring Security(CSRF, 認証・認可, セッション管理),
-Spring AOP(Aspect) → 監査ログ,
+Spring Security,
+Spring AOP(Aspect),
 Bean Validation,
 Transaction,
 
