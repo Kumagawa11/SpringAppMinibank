@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>入出金履歴</title>
+</head>
+
+<body>
+
+    <section layout:fragment="content">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>口座番号</th>
+                    <th>金額</th>
+                    <th>備考</th>
+                    <th>取引種別</th>
+                    <th>取引日</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr th:each="h : ${history}">
+                    <td th:text="${h.accountId}">
+                    </td>
+                    <td th:text="${h.account.accountNumber}">
+                    </td>
+                    <td th:text="${h.amount}">
+                    </td>
+                    <td th:text="${h.description}">
+                    </td>
+                    <td th:text="${h.type}">
+                    </td>
+                    <td th:text="${h.createdAt}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+</body>
+
+</html>
