@@ -17,8 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class WithdrawalServiceImpl implements WithdrawalService{
-
+public class WithdrawalServiceImpl implements WithdrawalService {
 
 	private final TransactionRepository txRepository;
 	private final AccountService accountService;
@@ -29,21 +28,16 @@ public class WithdrawalServiceImpl implements WithdrawalService{
 
 		AccountModel targetAccount = accountService.getAccountByUserId(userId).get();
 
-		
-
 		TransactionModel tx = new TransactionModel(
 				targetAccount.getAccountNumber(),
 				type,
 				amount,
 				description,
 				LocalDateTime.now());
-		
-		
+
 		targetAccount.withdrawal(amount);
 		txRepository.save(tx);
-		
 
 	}
-	
 
 }

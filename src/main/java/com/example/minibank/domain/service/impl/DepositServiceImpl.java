@@ -28,19 +28,15 @@ public class DepositServiceImpl implements DepositService {
 
 		AccountModel targetAccount = accountService.getAccountByUserId(userId).get();
 
-		
-
 		TransactionModel tx = new TransactionModel(
 				targetAccount.getAccountNumber(),
 				type,
 				amount,
 				description,
 				LocalDateTime.now());
-		
-		
+
 		targetAccount.deposit(amount);
 		txRepository.save(tx);
-		
 
 	}
 

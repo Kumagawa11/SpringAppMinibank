@@ -24,40 +24,37 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/deposit")
 @RequiredArgsConstructor
 public class DepositController {
-	
-	
-	private final DepositService depositService; 
+
+	private final DepositService depositService;
 	private final UserService userService;
 
 	@GetMapping
 	public String showDeposit(@ModelAttribute DepositForm depositForm) {
-		
-		
-		
+
 		return "deposit";
-		
+
 	}
+
 	@PostMapping
 	public String doDeposit(
-			@Valid @ModelAttribute DepositForm depositForm, 
+			@Valid @ModelAttribute DepositForm depositForm,
 			BindingResult result,
 			@AuthenticationPrincipal UserDetails userDetails) {
-		
-		
-		if(result.hasErrors()) {
-			
+
+		if (result.hasErrors()) {
+
 			return "/deposit";
-			
+
 		}
-		
+
 		BigDecimal amount = depositForm.getAmount();
 		int userId = userService.getUserIdByUsername(userDetails.getUsername());
 		depositService.deposit(
-				userId, amount, TransactionType.deposit, 
+				userId, amount, TransactionType.deposit,
 				depositForm.getDescription());
-		
+
 		return "redirect:/dashboard";
-		
+
 	}
-	
+
 }
