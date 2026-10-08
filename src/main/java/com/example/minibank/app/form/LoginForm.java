@@ -1,4 +1,4 @@
-package com.example.minibank.form;
+package com.example.minibank.app.form;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

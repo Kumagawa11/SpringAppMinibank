@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.minibank.app.form.LoginForm;
 import com.example.minibank.domain.service.account.AccountService;
 import com.example.minibank.domain.service.user.UserService;
-import com.example.minibank.form.LoginForm;
 
 import lombok.RequiredArgsConstructor;
 

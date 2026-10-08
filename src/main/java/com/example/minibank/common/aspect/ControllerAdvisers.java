@@ -1,4 +1,4 @@
-package com.example.minibank.aspect;
+package com.example.minibank.common.aspect;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;

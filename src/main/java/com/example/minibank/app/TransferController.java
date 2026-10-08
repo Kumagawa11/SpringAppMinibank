@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.minibank.app.form.TransferForm;
 import com.example.minibank.domain.model.TransactionType;
 import com.example.minibank.domain.service.transfer.TransferService;
 import com.example.minibank.domain.service.user.UserService;
-import com.example.minibank.form.TransferForm;
 
 import lombok.RequiredArgsConstructor;
 
