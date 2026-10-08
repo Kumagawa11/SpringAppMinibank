@@ -1,4 +1,4 @@
-package com.example.minibank.domain.service.impl;
+package com.example.minibank.domain.service.account;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -6,9 +6,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.minibank.domain.infrastructure.AccountRepository;
 import com.example.minibank.domain.model.AccountModel;
-import com.example.minibank.domain.repository.AccountRepository;
-import com.example.minibank.domain.service.AccountService;
 import com.example.minibank.exception.AccountNotFoundException;
 
 import lombok.RequiredArgsConstructor;

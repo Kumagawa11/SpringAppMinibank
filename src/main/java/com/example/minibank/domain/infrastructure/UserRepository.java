@@ -1,4 +1,4 @@
-package com.example.minibank.domain.repository;
+package com.example.minibank.domain.infrastructure;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -7,9 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.minibank.domain.service.AccountService;
-import com.example.minibank.domain.service.HistoryService;
-import com.example.minibank.domain.service.UserService;
+import com.example.minibank.domain.service.account.AccountService;
+import com.example.minibank.domain.service.history.HistoryService;
+import com.example.minibank.domain.service.user.UserService;
 
 import lombok.RequiredArgsConstructor;
 

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.minibank.domain.model.TransactionType;
-import com.example.minibank.domain.service.DepositService;
-import com.example.minibank.domain.service.UserService;
+import com.example.minibank.domain.service.deposit.DepositService;
+import com.example.minibank.domain.service.user.UserService;
 import com.example.minibank.form.DepositForm;
 
 import lombok.RequiredArgsConstructor;

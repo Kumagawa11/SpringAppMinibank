@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.example.minibank.domain.infrastructure.UserRepository;
 import com.example.minibank.domain.model.UserModel;
-import com.example.minibank.domain.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

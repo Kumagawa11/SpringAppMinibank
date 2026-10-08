@@ -48,14 +48,22 @@ public class CustomAuthenticationToken extends AbstractAuthenticationToken {
 
 	@Override
 	public @Nullable Object getCredentials() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		
+		return password;
+		
 	}
 
 	@Override
 	public @Nullable Object getPrincipal() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		
+		return username;
+		
+	}
+	
+	public @Nullable Object getAccountNumber() {
+		
+		return accountNumber;
+		
 	}
 
 }

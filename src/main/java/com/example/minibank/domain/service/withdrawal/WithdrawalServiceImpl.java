@@ -1,4 +1,4 @@
-package com.example.minibank.domain.service.impl;
+package com.example.minibank.domain.service.withdrawal;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -6,12 +6,11 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.minibank.domain.infrastructure.TransactionRepository;
 import com.example.minibank.domain.model.AccountModel;
 import com.example.minibank.domain.model.TransactionModel;
 import com.example.minibank.domain.model.TransactionType;
-import com.example.minibank.domain.repository.TransactionRepository;
-import com.example.minibank.domain.service.AccountService;
-import com.example.minibank.domain.service.WithdrawalService;
+import com.example.minibank.domain.service.account.AccountService;
 
 import lombok.RequiredArgsConstructor;
 

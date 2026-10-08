@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.minibank.domain.model.TransactionType;
-import com.example.minibank.domain.service.UserService;
-import com.example.minibank.domain.service.WithdrawalService;
+import com.example.minibank.domain.service.user.UserService;
+import com.example.minibank.domain.service.withdrawal.WithdrawalService;
 import com.example.minibank.form.WithdrawalForm;
 
 import lombok.RequiredArgsConstructor;

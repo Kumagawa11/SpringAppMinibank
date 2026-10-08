@@ -1,4 +1,4 @@
-package com.example.minibank.domain.service;
+package com.example.minibank.domain.service.account;
 
 import java.math.BigDecimal;
 import java.util.List;
