@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.minibank.form.LoginForm;
+import com.example.minibank.app.form.LoginForm;
 
 @Controller
 @RequestMapping("/login")

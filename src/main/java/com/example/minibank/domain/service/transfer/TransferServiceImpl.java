@@ -1,4 +1,4 @@
-package com.example.minibank.domain.service.impl;
+package com.example.minibank.domain.service.transfer;
 
 import java.math.BigDecimal;
 
@@ -7,8 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.minibank.domain.model.AccountModel;
 import com.example.minibank.domain.model.TransactionType;
-import com.example.minibank.domain.service.AccountService;
-import com.example.minibank.domain.service.TransferService;
+import com.example.minibank.domain.service.account.AccountService;
 import com.example.minibank.exception.AccountNotFoundException;
 import com.example.minibank.exception.SameAccountTransferException;
 
