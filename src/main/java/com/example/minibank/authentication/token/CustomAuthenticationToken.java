@@ -3,6 +3,7 @@ package com.example.minibank.authentication.token;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -45,5 +46,25 @@ public class CustomAuthenticationToken extends AbstractAuthenticationToken {
 		
 	}
 
+	@Override
+	public @Nullable Object getCredentials() {
+
+		return this.password;
+
+		
+	}
+
+	@Override
+	public @Nullable Object getPrincipal() {
+
+		return username;
+		
+	}
+	
+	public @Nullable Object getAccountNumber() {
+		
+		return accountNumber;
+		
+	}
 
 }
