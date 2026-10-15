@@ -1,5 +1,6 @@
 package com.example.minibank.domain.infrastructure;
 
+import java.util.List;
 import java.util.Optional;
 
 import jakarta.persistence.LockModeType;
@@ -18,5 +19,7 @@ public interface AccountRepository extends JpaRepository<AccountModel, Integer>{
 	@Lock(LockModeType.PESSIMISTIC_WRITE)
 	@Query("SELECT a FROM AccountModel a WHERE a.id = :id")
 	Optional<AccountModel> getAccountByUserIdForUpdate(Integer userId);
+	
+	List<AccountModel> getAccountListByUserId(Integer userId);
 
 }

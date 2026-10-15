@@ -4,39 +4,45 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.User;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.example.minibank.domain.model.AccountModel;
 
-@Data
-@AllArgsConstructor
-public class CustomUserDetails implements UserDetails {
 
-	private final String username;
-	private final String password;
-	private final Integer accountNumber;
 
-	@Override
-	public String getUsername() {
+public class CustomUserDetails extends User {
+
+	private Integer loginUserId;
+	private List<AccountModel> accounts;
+
+	
+	public CustomUserDetails(
+			Integer id,
+			String username,
+			String password,
+			Collection<? extends GrantedAuthority> authorities,
+			List<AccountModel> accounts
+			) {
 		
-		return this.username;
+		super(username, password, authorities);
+		
+		this.loginUserId = id;
+		this.accounts = accounts;
+		
 		
 	}
 	
-	@Override
-	public String getPassword() {
+	public Integer getLoginUserId() {
 		
-		return this.password;
+		return this.loginUserId;
 		
-	}
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO 自動生成されたメソッド・スタブ
-		return List.of();
 	}
 	
+	public List<AccountModel> getAccounts() {
+		
+		return this.accounts;
+		
+	}
 	
 	
 }

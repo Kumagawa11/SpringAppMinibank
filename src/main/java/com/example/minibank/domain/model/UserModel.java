@@ -9,9 +9,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+
 @Table(name="users")
 @NoArgsConstructor
+@Data
 public class UserModel {
 
 	@Id
@@ -19,6 +20,6 @@ public class UserModel {
 	private Integer id;
 	private String username;
 	private String password;
-
 	
+
 }

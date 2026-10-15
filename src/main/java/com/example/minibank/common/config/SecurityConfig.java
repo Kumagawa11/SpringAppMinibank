@@ -4,19 +4,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class LoginFormConfig {
+public class SecurityConfig {
+    
 
 	//自作ログイン画面に対して遷移する設定
 	@Bean
 	 SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		
+
 		http
 			.formLogin(login -> login
 					.loginPage("/login")
+					.loginProcessingUrl("/login")
 					.defaultSuccessUrl("/dashboard", true)
 					.permitAll()
 					)
@@ -34,5 +38,12 @@ public class LoginFormConfig {
 		return http.build();
 
 	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+	    return NoOpPasswordEncoder.getInstance();
+	}
+	
+	
 	
 }
