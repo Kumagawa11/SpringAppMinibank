@@ -49,7 +49,7 @@ public class ControllerAdvisers {
 	public String insufficientBalanceError(InsufficientBalanceException e, RedirectAttributes attributes) {
 
 		attributes.addFlashAttribute("errorMsg", e.getMessage());
-		return "redirect:/withdrawal";
+		return "redirect:/dashboard";
 
 	}
 

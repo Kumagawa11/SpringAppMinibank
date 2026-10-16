@@ -1,11 +1,14 @@
 package com.example.minibank.domain.service.transfer;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.minibank.domain.infrastructure.TransactionRepository;
 import com.example.minibank.domain.model.AccountModel;
+import com.example.minibank.domain.model.TransactionModel;
 import com.example.minibank.domain.model.TransactionType;
 import com.example.minibank.domain.service.account.AccountService;
 import com.example.minibank.exception.AccountNotFoundException;
@@ -18,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class TransferServiceImpl implements TransferService{
 	
 	private final AccountService accountService; 
+	private final TransactionRepository txRepository;
 
 	@Override
 	@Transactional
@@ -39,12 +43,28 @@ public class TransferServiceImpl implements TransferService{
 			
 		}
 		
+	      TransactionModel toTx = new TransactionModel(
+              to.getId(),
+              type,
+              amount,
+              description,
+              LocalDateTime.now());
+	      
+	      TransactionModel fromTx = new TransactionModel(
+              from.getId(),
+              type,
+              amount,
+              description,
+              LocalDateTime.now());
+		
 		
 		
 		to.deposit(amount);
 		from.withdrawal(amount);
-
 		
+		txRepository.save(toTx);
+		txRepository.save(fromTx);
+
 	}
 
 	

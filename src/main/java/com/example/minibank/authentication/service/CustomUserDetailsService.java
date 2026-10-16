@@ -27,7 +27,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 	public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
 		
 		UserModel user = Optional.ofNullable(userRepository.findUserByUsername(username)).orElseThrow(() -> new UsernameNotFoundException("user not found"));
-		System.out.println(user.getPassword());
+		
+		System.out.println(user);
 		
 		List<AccountModel> account =
 				accountRepository.getAccountListByUserId(user.getId());
@@ -35,8 +36,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 		return new CustomUserDetails(
 				
 				user.getId(),
-				user.getPassword(),
 				user.getUsername(),
+				user.getPassword(),
 				List.of(),
 				account
 				

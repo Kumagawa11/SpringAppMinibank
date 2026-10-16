@@ -28,7 +28,7 @@ public class DepositServiceImpl implements DepositService {
 		AccountModel targetAccount = accountService.getAccountByUserId(userId).get();
 
 		TransactionModel tx = new TransactionModel(
-				targetAccount.getAccountNumber(),
+				targetAccount.getId(),
 				type,
 				amount,
 				description,

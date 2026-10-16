@@ -11,7 +11,7 @@
 
     <section layout:fragment="content">
 
-        <table>
+        <table class="border">
             <thead>
                 <tr>
                     <th>id</th>
@@ -33,9 +33,15 @@
                     </td>
                     <td th:text="${h.description}">
                     </td>
-                    <td th:text="${h.type}">
+                    <td th:switch="${h.type?.name()}">
+                        <span th:case="deposit" th:text="#{transactionType.deposit}">
+                        </span>
+                        <span th:case="withdraw" th:text="#{transactionType.withdraw}">
+                        </span>
+                        <span th:case="transfer" th:text="#{transactionType.transfer}">
+                        </span>
                     </td>
-                    <td th:text="${h.createdAt}">
+                    <td th:text="${#temporals.format(h.createdAt, 'yyyy/MM/dd')}">
                     </td>
                 </tr>
             </tbody>

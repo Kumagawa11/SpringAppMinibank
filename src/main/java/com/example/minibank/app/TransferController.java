@@ -24,48 +24,44 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/transfer")
 public class TransferController {
-	
-	private final UserService userService;
-	private final TransferService transferService;
 
-	@GetMapping
-	public String showTransfer(
-			@ModelAttribute TransferForm transferForm) {
-		
-		
-		return "transfer";
-		
-	}
-	
-	@PostMapping
-	public String doTransfer(
-			@Valid @ModelAttribute TransferForm transferForm, 
-			BindingResult result,
-			@AuthenticationPrincipal UserDetails userDetails) {
-		
-		
-		if(result.hasErrors()) {
-			
-			return "/transfer";
-			
-		}
-		
-		BigDecimal amount = transferForm.getAmount();
-		int userId = 
-				userService
-				.getUserIdByUsername(userDetails.getUsername());
+    private final UserService userService;
 
-		transferService.transfer(
-				userId,
-				transferForm.getToAccount(),
-				amount,
-				TransactionType.transfer,
-				transferForm.getDescription()
-				);
+    private final TransferService transferService;
 
-		
-		return "redirect:/dashboard";
-		
-	}
-	
+    @GetMapping
+    public String showTransfer(
+        @ModelAttribute TransferForm transferForm) {
+
+        return "transfer";
+
+    }
+
+    @PostMapping
+    public String doTransfer(
+        @Valid @ModelAttribute TransferForm transferForm,
+        BindingResult result,
+        @AuthenticationPrincipal UserDetails userDetails) {
+
+        if (result.hasErrors()) {
+
+            return "/transfer";
+
+        }
+
+        BigDecimal amount = transferForm.getAmount();
+        int userId = userService
+            .getUserIdByUsername(userDetails.getUsername());
+
+        transferService.transfer(
+            userId,
+            transferForm.getToAccount(),
+            amount,
+            TransactionType.transfer,
+            transferForm.getDescription());
+
+        return "redirect:/dashboard";
+
+    }
+
 }
