@@ -29,10 +29,7 @@ public class WithdrawalController {
 	
 	@GetMapping
 	public String login(@ModelAttribute WithdrawalForm withdrawalForm) {
-		
-		
 		return "withdrawal";
-		
 	}
 	
 	@PostMapping
@@ -45,12 +42,9 @@ public class WithdrawalController {
 			) {
 		
 		if(result.hasErrors()) {
-			
 			return "/withdrawal";
-			
 		}
-		
-		
+
 		withdrawalService.withdrawal(
 				userService.getUserIdByUsername(userDetails.getUsername()),
 				withdrawalForm.getAmount(),
@@ -59,7 +53,6 @@ public class WithdrawalController {
 				);
 		
 		attributes.addFlashAttribute("withdrawalSuccess","出金に成功しました");
-		
 		return "redirect:/dashboard"; 
 		
 	}

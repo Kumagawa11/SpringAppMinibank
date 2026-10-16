@@ -20,7 +20,6 @@ public class LoginController {
 			Model model) {
 
 		if (error != null) {
-
 			model.addAttribute("errorMsg", "ログインに失敗しました");
 			return "login";
 		}
@@ -31,9 +30,7 @@ public class LoginController {
 
 	@PostMapping
 	public String login() {
-
 		return "dashboard";
-
 	}
 
 }

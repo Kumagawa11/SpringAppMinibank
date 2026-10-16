@@ -7,5 +7,4 @@ public class SameAccountTransferException extends RuntimeException{
 		super(message);
 		
 	}
-	
 }

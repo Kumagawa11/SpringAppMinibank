@@ -9,5 +9,4 @@ public class InsufficientBalanceException extends RuntimeException {
 		super(message);
 		
 	}
-	
 }

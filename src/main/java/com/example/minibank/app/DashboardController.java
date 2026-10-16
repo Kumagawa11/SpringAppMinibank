@@ -28,13 +28,10 @@ public class DashboardController {
 			@AuthenticationPrincipal CustomUserDetails userDetails
 			) {
 
-
 		int userId = userDetails.getLoginUserId();
 		model.addAttribute("balance", accountService.getBalanceByUserId(userId));
 		model.addAttribute("username", userDetails.getUsername());
-
+		
 		return "dashboard";
-
 	}
-
 }

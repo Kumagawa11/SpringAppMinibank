@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//バリデーションを入れる
 @Data
 @NoArgsConstructor
 public class DepositForm {

@@ -10,16 +10,17 @@ import lombok.NoArgsConstructor;
 
 @Entity
 
-@Table(name="users")
+@Table(name = "users")
 @NoArgsConstructor
 @Data
 public class UserModel {
 
-	@Id
-	@GeneratedValue
-	private Integer id;
-	private String username;
-	private String password;
-	
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    private String username;
+
+    private String password;
 
 }

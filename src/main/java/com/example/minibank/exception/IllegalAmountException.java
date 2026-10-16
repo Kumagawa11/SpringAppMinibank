@@ -7,5 +7,4 @@ public class IllegalAmountException extends RuntimeException{
 		super(message);
 		
 	}
-	
 }

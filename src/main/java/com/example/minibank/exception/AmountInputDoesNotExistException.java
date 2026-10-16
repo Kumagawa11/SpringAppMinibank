@@ -7,5 +7,4 @@ public class AmountInputDoesNotExistException extends RuntimeException {
 		super(message);
 		
 	}
-	
 }

@@ -11,15 +11,17 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.example.minibank.domain.model.AccountModel;
 
-public interface AccountRepository extends JpaRepository<AccountModel, Integer>{
+public interface AccountRepository
+    extends JpaRepository<AccountModel, Integer> {
 
-	Optional<AccountModel> getAccountByUserId(Integer userId);
-	Optional<AccountModel> getAccountByAccountNumber(Integer accountNumber);
-	
-	@Lock(LockModeType.PESSIMISTIC_WRITE)
-	@Query("SELECT a FROM AccountModel a WHERE a.id = :id")
-	Optional<AccountModel> getAccountByUserIdForUpdate(Integer userId);
-	
-	List<AccountModel> getAccountListByUserId(Integer userId);
+    Optional<AccountModel> getAccountByUserId(Integer userId);
+
+    Optional<AccountModel> getAccountByAccountNumber(Integer accountNumber);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT a FROM AccountModel a WHERE a.id = :id")
+    Optional<AccountModel> getAccountByUserIdForUpdate(Integer userId);
+
+    List<AccountModel> getAccountListByUserId(Integer userId);
 
 }

@@ -13,10 +13,6 @@ public class AccountController {
 
 	@GetMapping
 	public String login(@ModelAttribute LoginForm loginForm) {
-		
-		
 		return "login";
-		
-	}
-	
+	}	
 }

@@ -18,25 +18,31 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WithdrawalServiceImpl implements WithdrawalService {
 
-	private final TransactionRepository txRepository;
-	private final AccountService accountService;
+    private final TransactionRepository txRepository;
 
-	@Transactional
-	@Override
-	public void withdrawal(int userId, BigDecimal amount, TransactionType type, String description) {
+    private final AccountService accountService;
 
-		AccountModel targetAccount = accountService.getAccountByUserId(userId).get();
+    @Transactional
+    @Override
+    public void withdrawal(
+        int userId,
+        BigDecimal amount,
+        TransactionType type,
+        String description) {
 
-		TransactionModel tx = new TransactionModel(
-				targetAccount.getId(),
-				type,
-				amount,
-				description,
-				LocalDateTime.now());
+        AccountModel targetAccount = accountService.getAccountByUserId(userId)
+            .get();
 
-		targetAccount.withdrawal(amount);
-		txRepository.save(tx);
+        TransactionModel tx = new TransactionModel(
+            targetAccount.getId(),
+            type,
+            amount,
+            description,
+            LocalDateTime.now());
 
-	}
+        targetAccount.withdrawal(amount);
+        txRepository.save(tx);
+
+    }
 
 }

@@ -12,20 +12,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    //自作ログイン画面に対して遷移する設定
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http)
         throws Exception {
 
         http
-//            .securityMatcher("/h2-console/")
-//            .csrf((csrf) -> csrf.disable())
-//            .headers((headers) -> headers
-//                .frameOptions((frame) -> frame.sameOrigin())
-//                )
-            .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated())
             .formLogin(login -> login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
@@ -35,18 +26,15 @@ public class SecurityConfig {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")
                 .invalidateHttpSession(true)
-                .clearAuthentication(true));
-
-             
-            
-            
-
+                .clearAuthentication(true))
+            .authorizeHttpRequests(authz -> authz
+                .anyRequest().authenticated());
         return http.build();
 
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 

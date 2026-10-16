@@ -14,43 +14,42 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountService{
-	
-	private final AccountRepository accountRepository;
+public class AccountServiceImpl implements AccountService {
 
-	@Override
-	public List<AccountModel> getAll() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
+    private final AccountRepository accountRepository;
 
-	@Override
-	public Optional<AccountModel> getAccountByUserId(int userId) throws AccountNotFoundException {
-		// TODO 自動生成されたメソッド・スタブ
-		Optional<AccountModel> account = Optional.ofNullable(accountRepository.getAccountByUserId(userId).orElseThrow(() -> new AccountNotFoundException("対象ユーザーの口座が存在しません")));
-		return account;
-	}
+    @Override
+    public List<AccountModel> getAll() {
+        return accountRepository.findAll();
+    }
 
-	@Override
-	public BigDecimal getBalanceByUserId(int userId) {
-		// TODO 自動生成されたメソッド・スタブ
-		AccountModel account = this.getAccountByUserId(userId).get();
-		
-		return account.getBalance();
-		
-	}
+    @Override
+    public Optional<AccountModel> getAccountByUserId(int userId)
+        throws AccountNotFoundException {
+        // TODO 自動生成されたメソッド・スタブ
+        Optional<AccountModel> account = Optional.ofNullable(
+            accountRepository.getAccountByUserId(userId).orElseThrow(
+                () -> new AccountNotFoundException("対象ユーザーの口座が存在しません")));
+        return account;
+    }
 
-	@Override
-	public Optional<AccountModel> getAccountByAccountNumber(Integer accountNumber) {
-		Optional<AccountModel> account = 
-				accountRepository.getAccountByAccountNumber(accountNumber);
-		
-		return account;
-		
-	}
+    @Override
+    public BigDecimal getBalanceByUserId(int userId) {
+        // TODO 自動生成されたメソッド・スタブ
+        AccountModel account = this.getAccountByUserId(userId).get();
 
-	
+        return account.getBalance();
 
+    }
 
-	
+    @Override
+    public Optional<AccountModel> getAccountByAccountNumber(
+        Integer accountNumber) {
+        Optional<AccountModel> account = accountRepository
+            .getAccountByAccountNumber(accountNumber);
+
+        return account;
+
+    }
+
 }

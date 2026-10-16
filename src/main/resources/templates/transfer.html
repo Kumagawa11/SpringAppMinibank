@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout}">
-    
+
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
@@ -10,13 +10,11 @@
 <body>
 
     <section layout:fragment="content">
-
-
-
+        
         <form th:object="${transferForm}" th:action="@{/transfer}" th:method="post">
-           
+
             <p th:if="${errorMsg}" th:text="${errorMsg}"></p>
-             <p th:if="${#fields.hasErrors('toAccount')}" th:errors="*{toAccount}">
+            <p th:if="${#fields.hasErrors('toAccount')}" th:errors="*{toAccount}">
             </p>
             <div>
                 送金先口座番号：<input th:field="*{toAccount}">

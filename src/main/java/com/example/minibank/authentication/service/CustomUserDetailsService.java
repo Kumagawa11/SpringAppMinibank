@@ -19,31 +19,30 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-	private final UserRepository userRepository;
-	private final AccountRepository accountRepository;
+    private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
 
-	
-	@Override
-	public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-		
-		UserModel user = Optional.ofNullable(userRepository.findUserByUsername(username)).orElseThrow(() -> new UsernameNotFoundException("user not found"));
-		
-		System.out.println(user);
-		
-		List<AccountModel> account =
-				accountRepository.getAccountListByUserId(user.getId());
-		
-		return new CustomUserDetails(
-				
-				user.getId(),
-				user.getUsername(),
-				user.getPassword(),
-				List.of(),
-				account
-				
-				);
-				
-		
-	}
-	
+    @Override
+    public CustomUserDetails loadUserByUsername(String username)
+        throws UsernameNotFoundException {
+
+        UserModel user = Optional
+            .ofNullable(userRepository.findUserByUsername(username))
+            .orElseThrow(() -> new UsernameNotFoundException("user not found"));
+
+        List<AccountModel> account = accountRepository
+            .getAccountListByUserId(user.getId());
+
+        return new CustomUserDetails(
+
+            user.getId(),
+            user.getUsername(),
+            user.getPassword(),
+            List.of(),
+            account
+
+        );
+
+    }
+
 }

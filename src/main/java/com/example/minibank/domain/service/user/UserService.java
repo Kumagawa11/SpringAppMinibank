@@ -6,10 +6,8 @@ import com.example.minibank.domain.model.UserModel;
 
 public interface UserService {
 
-	public List<UserModel> getAll();
+    public List<UserModel> getAll();
 
-	public UserModel getUserModelById(int userId);
-	
-	public int getUserIdByUsername(String username);
+    public int getUserIdByUsername(String username);
 
 }

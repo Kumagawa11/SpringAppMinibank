@@ -8,30 +8,27 @@
 </head>
 
 <body>
-    
+
     <section layout:fragment="content">
-        
 
+        <form th:object="${depositForm}" th:action="@{/deposit}" th:method="post">
+            <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">
+            </p>
+            <div>
+                入金額：<input th:field="*{amount}">
+            </div>
 
-    <form th:object="${depositForm}" th:action="@{/deposit}" th:method="post">
-        <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">
-            
-        </p>
-        <div>
-            入金額：<input th:field="*{amount}">
-        </div>
+            <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
 
-        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
-                    
-        </p>        
-        <div>
-            備考：<textarea th:field="*{description}"></textarea>
-        </div>
-        <div>
-            <input type="submit" value="入金する">
-        </div>
-    </form>
-        
+            </p>
+            <div>
+                備考：<textarea th:field="*{description}"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="入金する">
+            </div>
+        </form>
+
     </section>
 
 </body>

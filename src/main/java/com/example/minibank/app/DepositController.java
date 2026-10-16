@@ -16,7 +16,6 @@ import com.example.minibank.app.form.DepositForm;
 import com.example.minibank.authentication.entity.CustomUserDetails;
 import com.example.minibank.domain.model.TransactionType;
 import com.example.minibank.domain.service.deposit.DepositService;
-import com.example.minibank.domain.service.user.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,36 +24,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class DepositController {
 
-	private final DepositService depositService;
-	private final UserService userService;
+    private final DepositService depositService;
 
-	@GetMapping
-	public String showDeposit(@ModelAttribute DepositForm depositForm) {
+    @GetMapping
+    public String showDeposit(@ModelAttribute DepositForm depositForm) {
 
-		return "deposit";
+        return "deposit";
 
-	}
+    }
 
-	@PostMapping
-	public String doDeposit(
-			@Valid @ModelAttribute DepositForm depositForm,
-			BindingResult result,
-			@AuthenticationPrincipal CustomUserDetails userDetails) {
+    @PostMapping
+    public String doDeposit(
+        @Valid @ModelAttribute DepositForm depositForm,
+        BindingResult result,
+        @AuthenticationPrincipal CustomUserDetails userDetails) {
 
-		if (result.hasErrors()) {
+        if (result.hasErrors()) {
+            return "/deposit";
+        }
 
-			return "/deposit";
+        BigDecimal amount = depositForm.getAmount();
+        int userId = userDetails.getLoginUserId();
+        depositService.deposit(
+            userId, amount, TransactionType.deposit,
+            depositForm.getDescription());
 
-		}
+        return "redirect:/dashboard";
 
-		BigDecimal amount = depositForm.getAmount();
-		int userId = userDetails.getLoginUserId();
-		depositService.deposit(
-				userId, amount, TransactionType.deposit,
-				depositForm.getDescription());
-
-		return "redirect:/dashboard";
-
-	}
-
+    }
 }

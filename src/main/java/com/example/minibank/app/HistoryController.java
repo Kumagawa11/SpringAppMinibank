@@ -25,15 +25,13 @@ public class HistoryController {
 	@GetMapping
 	public String showHistory(Model model, 
 			@AuthenticationPrincipal UserDetails userDetails) {
-		
-		
+
 		Integer userId = userService.getUserIdByUsername(userDetails.getUsername());
 		Integer accountId = accountService.getAccountByUserId(userId).get().getId();
 
 		model.addAttribute("history", historyService.getHistoryByAccountId(accountId));
+		
 		return "history";
 		
-	}
-	
-	
+	}	
 }

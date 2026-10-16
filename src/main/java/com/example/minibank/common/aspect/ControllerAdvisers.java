@@ -14,53 +14,65 @@ import com.example.minibank.exception.SameAccountTransferException;
 @ControllerAdvice
 public class ControllerAdvisers {
 
-	@ExceptionHandler({ AccountNotFoundException.class })
-	public String accountNotFoundError(AccountNotFoundException e, RedirectAttributes attribute) {
+    @ExceptionHandler({
+        AccountNotFoundException.class
+    })
+    public String accountNotFoundError(
+        AccountNotFoundException e,
+        RedirectAttributes attribute) {
 
-		String errorMsg = e.getMessage();
+        String errorMsg = e.getMessage();
 
-		attribute.addFlashAttribute("errorMsg", errorMsg);
+        attribute.addFlashAttribute("errorMsg", errorMsg);
 
-		if (errorMsg.contains(TransactionType.transfer.toString())) {
+        if (errorMsg.contains(TransactionType.transfer.toString())) {
 
-		attribute.addFlashAttribute("errorMsg", 
-				errorMsg.replace(TransactionType.transfer.toString(), ""));
-			return "redirect:/transfer";
+            attribute.addFlashAttribute("errorMsg",
+                errorMsg.replace(TransactionType.transfer.toString(), ""));
+            return "redirect:/transfer";
 
-		} else if (e.getMessage().contains("LOGIN")) {
+        } else if (e.getMessage().contains("LOGIN")) {
 
-			return "redirect:/login";
+            return "redirect:/login";
 
-		}
+        }
 
-		return "dashboard";
+        return "dashboard";
 
-	}
+    }
 
-	@ExceptionHandler({ IllegalAmountException.class })
-	public String illegalAmountError(IllegalAmountException e, Model model) {
+    @ExceptionHandler({
+        IllegalAmountException.class
+    })
+    public String illegalAmountError(IllegalAmountException e, Model model) {
 
-		model.addAttribute("errorMsg", e.getMessage());
-		return "deposit";
+        model.addAttribute("errorMsg", e.getMessage());
+        return "deposit";
 
-	}
+    }
 
-	@ExceptionHandler({ InsufficientBalanceException.class })
-	public String insufficientBalanceError(InsufficientBalanceException e, RedirectAttributes attributes) {
+    @ExceptionHandler({
+        InsufficientBalanceException.class
+    })
+    public String insufficientBalanceError(
+        InsufficientBalanceException e,
+        RedirectAttributes attributes) {
 
-		attributes.addFlashAttribute("errorMsg", e.getMessage());
-		return "redirect:/dashboard";
+        attributes.addFlashAttribute("errorMsg", e.getMessage());
+        return "redirect:/dashboard";
 
-	}
+    }
 
-	@ExceptionHandler({ SameAccountTransferException.class })
-	public String sameAccountTransferError(
-			SameAccountTransferException e,
-			RedirectAttributes attributes) {
+    @ExceptionHandler({
+        SameAccountTransferException.class
+    })
+    public String sameAccountTransferError(
+        SameAccountTransferException e,
+        RedirectAttributes attributes) {
 
-		attributes.addFlashAttribute("errorMsg", e.getMessage());
-		return "redirect:/transfer";
+        attributes.addFlashAttribute("errorMsg", e.getMessage());
+        return "redirect:/transfer";
 
-	}
+    }
 
 }

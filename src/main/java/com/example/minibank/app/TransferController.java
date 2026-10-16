@@ -32,9 +32,7 @@ public class TransferController {
     @GetMapping
     public String showTransfer(
         @ModelAttribute TransferForm transferForm) {
-
         return "transfer";
-
     }
 
     @PostMapping
@@ -44,9 +42,7 @@ public class TransferController {
         @AuthenticationPrincipal UserDetails userDetails) {
 
         if (result.hasErrors()) {
-
             return "/transfer";
-
         }
 
         BigDecimal amount = transferForm.getAmount();

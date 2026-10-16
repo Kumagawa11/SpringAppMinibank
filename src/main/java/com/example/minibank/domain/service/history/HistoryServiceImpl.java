@@ -17,11 +17,8 @@ public class HistoryServiceImpl implements HistoryService{
 	
 	@Override
 	public List<TransactionModel> getHistoryByAccountId(Integer accountId) {
-		
+	    
 		return txRepository.getTransactionByAccountId(accountId);
 		
 	}
-
-	
-	
 }

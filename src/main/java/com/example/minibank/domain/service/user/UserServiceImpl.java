@@ -11,29 +11,20 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
-	
-	private final UserRepository userRepository;
+public class UserServiceImpl implements UserService {
 
-	@Override
-	public List<UserModel> getAll() {
-		// TODO 自動生成されたメソッド・スタブ
-		return userRepository.findAll();
-	}
-	@Override
-	public UserModel getUserModelById(int userId) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
+    private final UserRepository userRepository;
 
-	@Override
-	public int getUserIdByUsername(String username) {
-		// TODO 自動生成されたメソッド・スタブ
-		UserModel user = userRepository.findUserByUsername(username);
-		int userId = user.getId();
-		return userId;
-	}
+    @Override
+    public List<UserModel> getAll() {
+        return userRepository.findAll();
+    }
 
-	
-	
+    @Override
+    public int getUserIdByUsername(String username) {
+        UserModel user = userRepository.findUserByUsername(username);
+        int userId = user.getId();
+        return userId;
+    }
+
 }
